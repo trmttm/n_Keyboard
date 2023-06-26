@@ -3,6 +3,25 @@ import unittest
 
 class MyTestCase(unittest.TestCase):
     def test_concept(self):
+        import json
+        path = 'shortcut.json'
+        with open(path, 'r') as json_file:
+            try:
+                state = json.load(json_file)
+            except:
+                state = dict()
+
+        def upon_ok():
+            clean_state = {}
+            for keycode, data in state.items():
+                if 'user_input' in data:
+                    clean_state[keycode] = data
+            with open(path, 'w') as json_file:
+                json.dump(clean_state, json_file)
+                print(f'Saved file to {path}.')
+
+        keycode = None
+
         import tkinter as tk
         from tkinter import ttk
 
@@ -45,28 +64,29 @@ class MyTestCase(unittest.TestCase):
         label_capture_user_input.grid(row=5, column=0)
         check_button_capture_user_input.grid(row=5, column=1)
 
-        state = dict()
-
         def update_state_upon_user_input(e: tk.Event):
-            user_input = {
-                'state': e.state,
-                'char': e.char,
-                'keysym': e.keysym,
-                'keysym_num': e.keysym_num,
-                'keycode': e.keycode,
-            }
+            nonlocal keycode
+            keycode = e.keycode
             new_state = {
-                'user_input': user_input,
+                e.keycode: {'system_state': {
+                    'state': e.state,
+                    'char': e.char,
+                    'keysym': e.keysym,
+                    'keysym_num': e.keysym_num,
+                }}
             }
             state.update(new_state)
 
         def update_state_upon_configuration():
-            map_to = dict(zip(modifiers, tuple(var.get() for var in vars.values())))
-            map_to.update({'key': entry_key.get()})
-            new_state = {
-                'map_to': map_to,
-            }
-            state.update(new_state)
+            system_state = state.get(keycode)
+            if system_state:
+                user_input = dict(zip(modifiers, tuple(var.get() for var in vars.values())))
+                user_input.update({'key': entry_key.get()})
+                system_state.update({'user_input': user_input})
+                new_state = {
+                    keycode: system_state,
+                }
+                state.update(new_state)
 
         def set_text(e: tk.Event):
             if var_capture_user_input.get():
@@ -82,7 +102,7 @@ class MyTestCase(unittest.TestCase):
         frame_configuration.grid_columnconfigure(1, weight=1)
         frame_configuration.grid_rowconfigure(5, weight=1)
 
-        modifiers = ('Shift', 'Control', 'Command', 'Function')
+        modifiers = ('Shift', 'Control', 'Command', 'Option', 'Alt', 'Function')
         vars = dict(zip(modifiers, tuple(tk.BooleanVar() for _ in modifiers)))
         widgets = {}
 
@@ -107,13 +127,6 @@ class MyTestCase(unittest.TestCase):
         entry_key.grid(row=len(modifiers), column=1)
 
         frame_bottom = ttk.Frame(root)
-
-        def upon_ok():
-            import json
-            path = 'shortcut.json'
-            with open(path, 'w') as json_file:
-                json.dump(state, json_file)
-                print(f'Saved file to {path}.')
 
         button_ok = ttk.Button(frame_bottom, text='OK', command=upon_ok)
         button_ok.grid(row=0, column=0)
