@@ -22,10 +22,10 @@ class KeyboardInputDisplay:
         self.label_keysym_num_display = ttk.Label(root)
         self.label_keycode_display = ttk.Label(root)
 
-        self._var_chekbutton = tk.BooleanVar()
-        self._var_chekbutton.set(True)
+        self._var_checkbutton = tk.BooleanVar()
+        self._var_checkbutton.set(True)
         label_capture_user_input = ttk.Label(root, width=25)
-        check_button_capture_user_input = ttk.Checkbutton(root, variable=self._var_chekbutton, command=self.notify)
+        check_button_capture_user_input = ttk.Checkbutton(root, variable=self._var_checkbutton, command=self.notify)
 
         label_state.grid(row=0, column=0, sticky='nsew')
         label_char.grid(row=1, column=0, sticky='nsew')
@@ -49,7 +49,7 @@ class KeyboardInputDisplay:
 
     def notify(self, *_):
         for subscriber in self._subscribers:
-            subscriber(self._var_chekbutton.get())
+            subscriber(self._var_checkbutton.get())
 
     def fix_frame_size(self):
         self._root.grid_propagate(False)
