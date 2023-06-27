@@ -27,7 +27,7 @@ class Keyboard:
                 label.grid(row=r, column=c, sticky='nswe')
                 self._key_labels[text.lower()] = label
 
-        for row in range(max_row):
+        for row in range(max_row + 1):
             root.grid_rowconfigure(row, weight=1)
         for column in range(max_col + 1):
             root.grid_columnconfigure(column, weight=1)
