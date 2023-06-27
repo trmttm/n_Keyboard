@@ -34,8 +34,10 @@ class Keyboard:
 
     def highlight_key(self, key: str):
         label = self._key_labels.get(key.lower())
-        label.configure(style=c.STYLE_LABEL_RED)
+        if label:
+            label.configure(style=c.STYLE_LABEL_RED)
 
     def remove_highlight_key(self, key: str):
         label = self._key_labels.get(key.lower())
-        label.configure(style=c.STYLE_LABEL_DEFAULT)
+        if label:
+            label.configure(style=c.STYLE_LABEL_DEFAULT)

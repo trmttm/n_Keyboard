@@ -37,8 +37,21 @@ class App:
         bind_commands(self._configuration_panel, self._controller_buttons, self._root, self._state)
 
     def display_keyboard(self):
-        Keyboard(self._parent_frame)
+        keyboard = Keyboard(self._parent_frame)
         self._controller_buttons.grid(row=2, column=0, columnspan=2)
+
+        import tkinter as tk
+        def key_push(e: tk.Event):
+            keyboard.highlight_key(e.keysym)
+            keyboard.highlight_key(e.char)
+            self._state.set_text(e)
+
+        def key_release(e: tk.Event):
+            keyboard.remove_highlight_key(e.keysym)
+            keyboard.remove_highlight_key(e.char)
+
+        self._root.bind('<Key>', key_push)
+        self._root.bind('<KeyRelease>', key_release)
 
     def run(self):
         self._root.mainloop()
