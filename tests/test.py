@@ -10,69 +10,7 @@ def instantiate_root() -> tk.Tk:
     return root
 
 
-import json
-
-from gui.components.keyboard_input_display import KeyboardInputDisplay
-from gui.components.configuration_panel import ConfigurationPanel
-
-
-class State:
-    def __init__(self, input_display: KeyboardInputDisplay, config_panel: ConfigurationPanel):
-        path = 'shortcut.json'
-        with open(path, 'r') as json_file:
-            try:
-                state = json.load(json_file)
-            except:
-                state = dict()
-
-        self.state = state
-        self.path = path
-        self.keycode = None
-        self.input_display = input_display
-        self.configuration_panel = config_panel
-
-    def upon_ok(self):
-        clean_state = {}
-        for keycode, data in self.state.items():
-            if 'user_input' in data:
-                clean_state[keycode] = data
-        with open(self.path, 'w') as json_file:
-            json.dump(clean_state, json_file)
-            print(f'Saved file to {self.path}.')
-
-    def update_state_upon_user_input(self, e: tk.Event):
-        self.keycode = e.keycode
-        new_state = {
-            e.keycode: {'system_state': {
-                'state': e.state,
-                'char': e.char,
-                'keysym': e.keysym,
-                'keysym_num': e.keysym_num,
-            }}
-        }
-        self.state.update(new_state)
-
-    def update_state_upon_configuration(self):
-        system_state = self.state.get(self.keycode)
-        cp = self.configuration_panel
-        if system_state:
-            user_input = dict(zip(cp.modifiers, tuple(var.get() for var in cp.vars.values())))
-            user_input.update({'key': cp.entry_key.get()})
-            system_state.update({'user_input': user_input})
-            new_state = {
-                self.keycode: system_state,
-            }
-            self.state.update(new_state)
-
-    def set_text(self, e: tk.Event):
-        input_display = self.input_display
-        if input_display.var_capture_user_input.get():
-            input_display.label_state_display.configure(text=e.state)
-            input_display.label_char_display.configure(text=e.char)
-            input_display.label_keysysm_display.configure(text=e.keysym)
-            input_display.label_keysym_num_display.configure(text=e.keysym_num)
-            input_display.label_keycode_display.configure(text=e.keycode)
-            self.update_state_upon_user_input(e)
+from n_keyboard import constant as c
 
 
 class MyTestCase(unittest.TestCase):
@@ -216,9 +154,9 @@ class MyTestCase(unittest.TestCase):
         root.mainloop()
 
     def test_oop_refactoring(self):
-        from gui.components.keyboard_input_display import KeyboardInputDisplay
-        from gui.components.configuration_panel import ConfigurationPanel
-        from gui.components.controller_buttons import ControllerButtons
+        from n_keyboard.gui.components.keyboard_input_display import KeyboardInputDisplay
+        from n_keyboard.gui.components.configuration_panel import ConfigurationPanel
+        from n_keyboard.gui.components.controller_buttons import ControllerButtons
 
         root = instantiate_root()
 
@@ -233,9 +171,18 @@ class MyTestCase(unittest.TestCase):
         configuration_panel = ConfigurationPanel(frame_parent, column=1)
         controller_buttons = ControllerButtons(frame_parent, row=1, columnspan=2)
 
-        state = State(input_display, configuration_panel)
-        # Command binding
+        from n_keyboard.gui.state import State
+        state = State(configuration_panel.get_user_input, 'shortcut.json')
 
+        # Define interactions between objects
+        state.attach(c.STATE, lambda value: input_display.label_state_display.configure(text=value))
+        state.attach(c.CHAR, lambda value: input_display.label_state_display.configure(text=value))
+        state.attach(c.KEYSYM, lambda value: input_display.label_state_display.configure(text=value))
+        state.attach(c.KEYSYM_NUM, lambda value: input_display.label_state_display.configure(text=value))
+        state.attach(c.KEYCODE, lambda value: input_display.label_state_display.configure(text=value))
+        input_display.attach_to_switch(lambda on_off: state.toggle_user_input_capture(on_off))
+
+        # Bind commands
         root.bind('<Key>', state.set_text)
         controller_buttons.button_ok['command'] = state.upon_ok
         for check_button in configuration_panel.check_buttons:

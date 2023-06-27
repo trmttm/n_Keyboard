@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
+from typing import Callable
 
 
 class KeyboardInputDisplay:
@@ -21,10 +22,10 @@ class KeyboardInputDisplay:
         self.label_keysym_num_display = ttk.Label(root)
         self.label_keycode_display = ttk.Label(root)
 
-        self.var_capture_user_input = tk.BooleanVar()
-        self.var_capture_user_input.set(True)
+        self._var_combobox = tk.BooleanVar()
+        self._var_combobox.set(True)
         label_capture_user_input = ttk.Label(root, width=25)
-        check_button_capture_user_input = ttk.Checkbutton(root, variable=self.var_capture_user_input)
+        check_button_capture_user_input = ttk.Checkbutton(root, variable=self._var_combobox, command=self.notify)
 
         label_state.grid(row=0, column=0, sticky='nsew')
         label_char.grid(row=1, column=0, sticky='nsew')
@@ -40,3 +41,12 @@ class KeyboardInputDisplay:
 
         label_capture_user_input.grid(row=5, column=0)
         check_button_capture_user_input.grid(row=5, column=1)
+
+        self._subscribers = []
+
+    def attach_to_switch(self, subscriber: Callable):
+        self._subscribers.append(subscriber)
+
+    def notify(self, *_):
+        for subscriber in self._subscribers:
+            subscriber(self._var_combobox.get())

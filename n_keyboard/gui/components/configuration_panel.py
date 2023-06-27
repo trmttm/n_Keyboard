@@ -1,6 +1,8 @@
 import tkinter as tk
 from tkinter import ttk
 
+from n_keyboard import constant as c
+
 
 class ConfigurationPanel:
     def __init__(self, parent_frame: ttk.Frame, row=0, column=0, rowspan=None, columnspan=None):
@@ -26,3 +28,8 @@ class ConfigurationPanel:
 
         label_key.grid(row=len(self.modifiers), column=0)
         self.entry_key.grid(row=len(self.modifiers), column=1)
+
+    def get_user_input(self) -> dict:
+        user_input = dict(zip(self.modifiers, tuple(var.get() for var in self.vars.values())))
+        user_input.update({c.KEY: self.entry_key.get()})
+        return user_input
