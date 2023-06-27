@@ -8,6 +8,8 @@ class Keyboard:
         root = ttk.Frame(parent_frame, padding=(15, 15))
         root.grid(row=1, column=0, columnspan=2, sticky='nsew')
 
+        label_style = "flat", "raised", "sunken", "ridge", "solid", "groove"
+
         row00 = '1234567890-='
         row01 = 'qwertyuiop[]'.upper()
         row02 = "asdfghjkl;'\\".upper()
@@ -18,69 +20,52 @@ class Keyboard:
 
         self._key_labels: dict[[str], ttk.Label] = dict()
 
-        label_style = "flat", "raised", "sunken", "ridge", "solid", "groove"
         for r, row in enumerate((row00, row01, row02, row03)):
             max_row = max(max_row, r)
             for col, text in enumerate(list(row)):
                 max_col = max(max_col, col)
-                label = ttk.Label(root, text=text, borderwidth=3, relief=label_style[1], anchor='center')
-                label.grid(row=r + 1, column=col + 2, sticky='nswe')
-                self._key_labels[text.lower()] = label
+                self.add_label_and_register(root, text, label_style, r + 1, col + 2)
 
         number_of_manual_rows = 2
         number_of_manual_columns = 2
 
         # Manual Keys
         # Row 0
-        label = ttk.Label(root, text='Escape', borderwidth=3, relief=label_style[1], anchor='center')
-        label.grid(row=0, column=0, columnspan=2, sticky='nswe')
+        self.add_label_and_register(root, 'Escape', label_style, 0, 0, 2)
         for n in range(12):
-            label = ttk.Label(root, text=f'F{n + 1}', borderwidth=3, relief=label_style[1], anchor='center', width=25)
-            label.grid(row=0, column=n + number_of_manual_columns, sticky='nswe')
+            self.add_label_and_register(root, f'F{n + 1}', label_style, 0, n + number_of_manual_columns)
 
         # Row 1
-        for n, text in enumerate(('fn', 'control', 'option', 'command')):
-            label = ttk.Label(root, text=text, borderwidth=3, relief=label_style[1], anchor='center', width=25)
-            label.grid(row=5, column=n, sticky='nswe')
-        label = ttk.Label(root, text='Space', borderwidth=3, relief=label_style[1], anchor='center', width=25)
-        label.grid(row=5, column=4, columnspan=5, sticky='nswe')
-        label = ttk.Label(root, text='command', borderwidth=3, relief=label_style[1], anchor='center', width=25)
-        label.grid(row=5, column=9, sticky='nswe')
-        label = ttk.Label(root, text='option', borderwidth=3, relief=label_style[1], anchor='center', width=25)
-        label.grid(row=5, column=10, sticky='nswe')
-        label = ttk.Label(root, text='←', borderwidth=3, relief=label_style[1], anchor='center', width=25)
-        label.grid(row=5, column=11, sticky='nswe')
-        label = ttk.Label(root, text='↑', borderwidth=3, relief=label_style[1], anchor='center', width=25)
-        label.grid(row=5, column=12, sticky='nswe')
-        label = ttk.Label(root, text='↓', borderwidth=3, relief=label_style[1], anchor='center', width=25)
-        label.grid(row=5, column=13, sticky='nswe')
-        label = ttk.Label(root, text='→', borderwidth=3, relief=label_style[1], anchor='center', width=25)
-        label.grid(row=5, column=14, sticky='nswe')
+        for n, text in enumerate(('Super_L', 'Control_L', 'Alt_L', 'Meta_L')):  # before space
+            self.add_label_and_register(root, text, label_style, 5, n)
+
+        self.add_label_and_register(root, 'Space', label_style, 5, 4, 5)  # exception / space
+
+        for n, text in enumerate(('Meta_R', 'Alt_R', 'Left', 'Down', 'Up', 'Right')):  # after space
+            self.add_label_and_register(root, text, label_style, 5, n + 9)
 
         # Left column
-        label = ttk.Label(root, text='§', borderwidth=3, relief=label_style[1], anchor='center', width=25)
-        label.grid(row=1, column=0, columnspan=2, sticky='nswe')
-        label = ttk.Label(root, text='Tab', borderwidth=3, relief=label_style[1], anchor='center', width=25)
-        label.grid(row=2, column=0, columnspan=2, sticky='nswe')
-        label = ttk.Label(root, text='CapLock', borderwidth=3, relief=label_style[1], anchor='center', width=25)
-        label.grid(row=3, column=0, columnspan=2, sticky='nswe')
-        label = ttk.Label(root, text='Shift_L', borderwidth=3, relief=label_style[1], anchor='center', width=25)
-        label.grid(row=4, column=0, sticky='nswe')
-        label = ttk.Label(root, text='`', borderwidth=3, relief=label_style[1], anchor='center', width=25)
-        label.grid(row=4, column=1, sticky='nswe')
+        self.add_label_and_register(root, '§', label_style, 1, 0, 2)
+        self.add_label_and_register(root, 'Tab', label_style, 2, 0, 2)
+        self.add_label_and_register(root, 'Caps_Lock', label_style, 3, 0, 2)
+        self.add_label_and_register(root, 'Shift_L', label_style, 4, 0)
+        self.add_label_and_register(root, '`', label_style, 4, 1)
 
         # Right column
-        label = ttk.Label(root, text='Backspace', borderwidth=3, relief=label_style[1], anchor='center', width=25)
-        label.grid(row=1, column=max_col + number_of_manual_columns + 1, sticky='nswe')
-        label = ttk.Label(root, text='Return', borderwidth=3, relief=label_style[1], anchor='center', width=25)
-        label.grid(row=2, column=max_col + number_of_manual_columns + 1, rowspan=2, sticky='nswe')
-        label = ttk.Label(root, text='Shift_R', borderwidth=3, relief=label_style[1], anchor='center', width=25)
-        label.grid(row=4, column=max_col + number_of_manual_columns - 1, columnspan=3, sticky='nswe')
+        self.add_label_and_register(root, 'Backspace', label_style, 1, max_col + number_of_manual_columns + 1)
+        self.add_label_and_register(root, 'Return', label_style, 2, max_col + number_of_manual_columns + 1,rowspan=2)
+        self.add_label_and_register(root, 'Shift_R', label_style, 4, max_col + number_of_manual_columns - 1,3)
+
 
         for row in range(max_row + number_of_manual_rows + 1):
             root.grid_rowconfigure(row, weight=1)
         for column in range(max_col + number_of_manual_columns + 2):
             root.grid_columnconfigure(column, weight=1)
+
+    def add_label_and_register(self, root, text, label_style, row, column, columnspan=None, rowspan=None):
+        label = ttk.Label(root, text=text, borderwidth=3, relief=label_style[1], anchor='center', width=25)
+        label.grid(row=row, column=column, columnspan=columnspan, rowspan=rowspan, sticky='nswe')
+        self._key_labels[text.lower()] = label
 
     def highlight_key(self, key: str):
         label = self._key_labels.get(key.lower())
