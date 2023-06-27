@@ -12,7 +12,7 @@ def instantiate_root(width=800, height=400) -> tk.Tk:
 
     style = ttk.Style()
     themes = ('aqua', 'clam', 'alt', 'default', 'classic')
-    style.theme_use(themes[2])
+    style.theme_use(themes[3])
     style.configure(c.STYLE_LABEL_RED, foreground="red", background='yellow')
 
     return root
