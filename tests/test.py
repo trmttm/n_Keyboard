@@ -1,4 +1,78 @@
+import tkinter as tk
 import unittest
+
+
+def instantiate_root() -> tk.Tk:
+    import tkinter as tk
+    root = tk.Tk()
+    root.grid_columnconfigure(0, weight=1)
+    root.grid_rowconfigure(0, weight=1)
+    return root
+
+
+import json
+
+from gui.components.keyboard_input_display import KeyboardInputDisplay
+from gui.components.configuration_panel import ConfigurationPanel
+
+
+class State:
+    def __init__(self, input_display: KeyboardInputDisplay, config_panel: ConfigurationPanel):
+        path = 'shortcut.json'
+        with open(path, 'r') as json_file:
+            try:
+                state = json.load(json_file)
+            except:
+                state = dict()
+
+        self.state = state
+        self.path = path
+        self.keycode = None
+        self.input_display = input_display
+        self.configuration_panel = config_panel
+
+    def upon_ok(self):
+        clean_state = {}
+        for keycode, data in self.state.items():
+            if 'user_input' in data:
+                clean_state[keycode] = data
+        with open(self.path, 'w') as json_file:
+            json.dump(clean_state, json_file)
+            print(f'Saved file to {self.path}.')
+
+    def update_state_upon_user_input(self, e: tk.Event):
+        self.keycode = e.keycode
+        new_state = {
+            e.keycode: {'system_state': {
+                'state': e.state,
+                'char': e.char,
+                'keysym': e.keysym,
+                'keysym_num': e.keysym_num,
+            }}
+        }
+        self.state.update(new_state)
+
+    def update_state_upon_configuration(self):
+        system_state = self.state.get(self.keycode)
+        cp = self.configuration_panel
+        if system_state:
+            user_input = dict(zip(cp.modifiers, tuple(var.get() for var in cp.vars.values())))
+            user_input.update({'key': cp.entry_key.get()})
+            system_state.update({'user_input': user_input})
+            new_state = {
+                self.keycode: system_state,
+            }
+            self.state.update(new_state)
+
+    def set_text(self, e: tk.Event):
+        input_display = self.input_display
+        if input_display.var_capture_user_input.get():
+            input_display.label_state_display.configure(text=e.state)
+            input_display.label_char_display.configure(text=e.char)
+            input_display.label_keysysm_display.configure(text=e.keysym)
+            input_display.label_keysym_num_display.configure(text=e.keysym_num)
+            input_display.label_keycode_display.configure(text=e.keycode)
+            self.update_state_upon_user_input(e)
 
 
 class MyTestCase(unittest.TestCase):
@@ -29,7 +103,13 @@ class MyTestCase(unittest.TestCase):
         root.grid_columnconfigure(0, weight=1)
         root.grid_rowconfigure(0, weight=1)
 
-        frame_display = ttk.Frame(root, padding=(15, 15))
+        frame_row_01 = ttk.Frame(root)
+        frame_row_01.grid_columnconfigure(0, weight=1)
+        frame_row_01.grid_columnconfigure(1, weight=1)
+        frame_row_01.grid_rowconfigure(0, weight=1)
+        frame_row_01.grid(row=0, column=0, sticky='nsew')
+
+        frame_display = ttk.Frame(frame_row_01, padding=(15, 15))
         frame_display.grid(row=0, column=0, sticky='nsew')
         frame_display.grid_columnconfigure(0, weight=1)
         frame_display.grid_rowconfigure(6, weight=1)
@@ -97,10 +177,10 @@ class MyTestCase(unittest.TestCase):
                 label_keycode_display.configure(text=e.keycode)
                 update_state_upon_user_input(e)
 
-        frame_configuration = ttk.Frame(root, padding=(15, 15))
-        frame_configuration.grid(row=1, column=0, sticky='nsew')
+        frame_configuration = ttk.Frame(frame_row_01, padding=(15, 15))
+        frame_configuration.grid(row=0, column=1, sticky='nsew')
         frame_configuration.grid_columnconfigure(1, weight=1)
-        frame_configuration.grid_rowconfigure(5, weight=1)
+        frame_configuration.grid_rowconfigure(15, weight=1)
 
         modifiers = ('Shift', 'Control', 'Command', 'Option', 'Alt', 'Function')
         vars = dict(zip(modifiers, tuple(tk.BooleanVar() for _ in modifiers)))
@@ -130,9 +210,38 @@ class MyTestCase(unittest.TestCase):
 
         button_ok = ttk.Button(frame_bottom, text='OK', command=upon_ok)
         button_ok.grid(row=0, column=0)
-        frame_bottom.grid(row=2, column=0)
+        frame_bottom.grid(row=1, column=0)
 
         root.bind('<Key>', set_text)
+        root.mainloop()
+
+    def test_oop_refactoring(self):
+        from gui.components.keyboard_input_display import KeyboardInputDisplay
+        from gui.components.configuration_panel import ConfigurationPanel
+        from gui.components.controller_buttons import ControllerButtons
+
+        root = instantiate_root()
+
+        from tkinter import ttk
+        frame_parent = ttk.Frame(root)
+        frame_parent.grid_columnconfigure(0, weight=1)
+        frame_parent.grid_columnconfigure(1, weight=1)
+        frame_parent.grid_rowconfigure(0, weight=1)
+        frame_parent.grid(row=0, column=0, sticky='nsew')
+
+        input_display = KeyboardInputDisplay(frame_parent)
+        configuration_panel = ConfigurationPanel(frame_parent, column=1)
+        controller_buttons = ControllerButtons(frame_parent, row=1, columnspan=2)
+
+        state = State(input_display, configuration_panel)
+        # Command binding
+
+        root.bind('<Key>', state.set_text)
+        controller_buttons.button_ok['command'] = state.upon_ok
+        for check_button in configuration_panel.check_buttons:
+            check_button['command'] = lambda *_: state.update_state_upon_configuration()
+        configuration_panel.entry_key.bind('<KeyRelease>', lambda *_: state.update_state_upon_configuration())
+
         root.mainloop()
 
 

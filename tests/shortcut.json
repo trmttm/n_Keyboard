@@ -15,39 +15,5 @@
       "Function": false,
       "key": "a"
     }
-  },
-  "188743746": {
-    "system_state": {
-      "state": 1,
-      "char": "B",
-      "keysym": "B",
-      "keysym_num": 66
-    },
-    "user_input": {
-      "Shift": true,
-      "Control": false,
-      "Command": false,
-      "Option": false,
-      "Alt": false,
-      "Function": false,
-      "key": "b"
-    }
-  },
-  "12583109": {
-    "system_state": {
-      "state": 25,
-      "char": "\u00c5",
-      "keysym": "Aring",
-      "keysym_num": 197
-    },
-    "user_input": {
-      "Shift": true,
-      "Control": false,
-      "Command": true,
-      "Option": true,
-      "Alt": false,
-      "Function": false,
-      "key": "a"
-    }
   }
 }
