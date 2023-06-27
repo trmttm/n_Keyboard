@@ -5,9 +5,9 @@ from n_keyboard import constant as c
 
 
 class ConfigurationPanel:
-    def __init__(self, parent_frame: ttk.Frame, row=0, column=0, rowspan=None, columnspan=None):
+    def __init__(self, parent_frame: ttk.Frame):
         root = ttk.Frame(parent_frame, padding=(15, 15))
-        root.grid(row=row, column=column, columnspan=columnspan, rowspan=rowspan, sticky='nsew')
+        root.grid(row=0, column=1, sticky='nsew')
         root.grid_columnconfigure(1, weight=1)
         root.grid_rowconfigure(15, weight=1)
 

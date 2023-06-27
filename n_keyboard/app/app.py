@@ -18,13 +18,12 @@ class App:
         self._instantiate_state()
         self._define_objects_interactions()
         self._bind_commands()
-        self._root.mainloop()
 
     def _load_gui(self):
         frame_parent = configure_frame_parent(self._root)
         self._input_display = KeyboardInputDisplay(frame_parent)
-        self._configuration_panel = ConfigurationPanel(frame_parent, column=1)
-        self._controller_buttons = ControllerButtons(frame_parent, row=1, columnspan=2)
+        self._configuration_panel = ConfigurationPanel(frame_parent)
+        self._controller_buttons = ControllerButtons(frame_parent)
 
     def _instantiate_state(self):
         self._state = instantiate_state(self._configuration_panel)
@@ -34,3 +33,9 @@ class App:
 
     def _bind_commands(self):
         bind_commands(self._configuration_panel, self._controller_buttons, self._root, self._state)
+
+    def display_keyboard(self):
+        pass
+
+    def run(self):
+        self._root.mainloop()

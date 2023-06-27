@@ -168,8 +168,8 @@ class MyTestCase(unittest.TestCase):
         frame_parent.grid(row=0, column=0, sticky='nsew')
 
         input_display = KeyboardInputDisplay(frame_parent)
-        configuration_panel = ConfigurationPanel(frame_parent, column=1)
-        controller_buttons = ControllerButtons(frame_parent, row=1, columnspan=2)
+        configuration_panel = ConfigurationPanel(frame_parent)
+        controller_buttons = ControllerButtons(frame_parent)
 
         from n_keyboard.gui.state import State
         state = State(configuration_panel.get_user_input, 'shortcut.json')
@@ -194,6 +194,13 @@ class MyTestCase(unittest.TestCase):
     def test_encapsulate_as_an_app(self):
         from n_keyboard.app.app import App
         app = App()
+        app.run()
+
+    def test_keyboard_display(self):
+        from n_keyboard.app.app import App
+        app = App()
+        app.display_keyboard()
+        app.run()
 
 
 if __name__ == '__main__':
