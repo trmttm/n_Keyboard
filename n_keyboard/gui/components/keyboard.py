@@ -1,6 +1,9 @@
+import tkinter as tk
 from tkinter import ttk
+from typing import Callable
 
 from n_keyboard import constant as c
+from n_keyboard.gui.state import State
 
 
 class Keyboard:
@@ -75,3 +78,62 @@ class Keyboard:
         label = self._key_labels.get(key.lower())
         if label:
             label.configure(style=c.STYLE_LABEL_DEFAULT)
+
+
+def rule_exists(key: str, rule: dict) -> bool:
+    return key in rule and rule.get(key).get(c.USER_INPUT)
+
+
+def highlight_as_per_rule(unique_key: str, rule: dict, keyboard: Keyboard):
+    user_input = rule.get(unique_key).get(c.USER_INPUT)
+    key = user_input.get(c.KEY)
+    set_or_remove_highlight(key, user_input, keyboard.highlight_key)
+
+
+def remove_highlight_as_per_rule(unique_key: str, rule: dict, keyboard: Keyboard):
+    user_input = rule.get(unique_key).get(c.USER_INPUT)
+    key = user_input.get(c.KEY)
+    set_or_remove_highlight(key, user_input, keyboard.remove_highlight_key)
+
+
+def set_or_remove_highlight(key: str, user_input: dict, set_or_remove_highlight: Callable):
+    set_or_remove_highlight(key)
+    if user_input.get(c.SHIFT):
+        set_or_remove_highlight(c.SHIFT_L)
+    if user_input.get(c.CONTROL):
+        set_or_remove_highlight(c.CONTROL_L)
+    if user_input.get(c.COMMAND):
+        set_or_remove_highlight(c.COMMAND_L)
+    if user_input.get(c.OPTION):
+        set_or_remove_highlight(c.OPTION_L)
+    if user_input.get(c.ALT):
+        set_or_remove_highlight(c.ALT_L)
+    if user_input.get(c.FUNCTION):
+        set_or_remove_highlight(c.FUNCTION_L)
+
+
+def update_root_binding(root: tk.Tk, state: State, keyboard: Keyboard):
+    # Bind root again
+    import tkinter as tk
+    def key_push(e: tk.Event):
+        # rule 01 if json specifies, then follow that rule.
+        key = state.create_unique_key(e)
+        rule = state.state
+        if rule_exists(key, rule):
+            highlight_as_per_rule(key, rule, keyboard)
+        else:
+            keyboard.highlight_key(e.keysym)
+            keyboard.highlight_key(e.char)
+        state.set_text(e)
+
+    def key_release(e: tk.Event):
+        key = state.create_unique_key(e)
+        rule = state.state
+        if rule_exists(key, rule):
+            remove_highlight_as_per_rule(key, rule, keyboard)
+        else:
+            keyboard.remove_highlight_key(e.keysym)
+            keyboard.remove_highlight_key(e.char)
+
+    root.bind('<Key>', key_push)
+    root.bind('<KeyRelease>', key_release)
