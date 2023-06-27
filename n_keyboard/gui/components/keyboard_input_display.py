@@ -53,3 +53,13 @@ class KeyboardInputDisplay:
 
     def fix_frame_size(self):
         self._root.grid_propagate(False)
+
+    def set_listen_to_user_on(self):
+        self._var_checkbutton.set(True)
+
+    def toggle_listen_to_user(self):
+        self._var_checkbutton.set(not self._var_checkbutton.get())
+
+    @property
+    def is_listening_to_user(self) -> bool:
+        return self._var_checkbutton.get()

@@ -3,7 +3,10 @@ from tkinter import ttk
 from typing import Callable
 
 from n_keyboard import constant as c
+from n_keyboard.gui.bind_commands import upon_ok
 from n_keyboard.gui.state import State
+from .configuration_panel import ConfigurationPanel
+from .keyboard_input_display import KeyboardInputDisplay
 
 
 class Keyboard:
@@ -112,28 +115,44 @@ def set_or_remove_highlight(key: str, user_input: dict, set_or_remove_highlight:
         set_or_remove_highlight(c.FUNCTION_L)
 
 
-def update_root_binding(root: tk.Tk, state: State, keyboard: Keyboard):
+def update_root_binding(root: tk.Tk, state: State, keyboard: Keyboard, input_display: KeyboardInputDisplay,
+                        configuration_panel: ConfigurationPanel):
     # Bind root again
-    import tkinter as tk
-    def key_push(e: tk.Event):
-        # rule 01 if json specifies, then follow that rule.
-        key = state.create_unique_key(e)
-        rule = state.state
-        if rule_exists(key, rule):
-            highlight_as_per_rule(key, rule, keyboard)
-        else:
-            keyboard.highlight_key(e.keysym)
-            keyboard.highlight_key(e.char)
-        state.set_text(e)
 
-    def key_release(e: tk.Event):
-        key = state.create_unique_key(e)
-        rule = state.state
-        if rule_exists(key, rule):
-            remove_highlight_as_per_rule(key, rule, keyboard)
-        else:
-            keyboard.remove_highlight_key(e.keysym)
-            keyboard.remove_highlight_key(e.char)
+    def return_on_entry(e: tk.Event):
+        if e.keysym.lower() == c.RETURN.lower():
+            upon_ok(state, input_display)
 
-    root.bind('<Key>', key_push)
-    root.bind('<KeyRelease>', key_release)
+    configuration_panel.entry_key.bind('<Key>', return_on_entry)
+    root.bind('<Key>', lambda e: key_push(e, state, keyboard, input_display, configuration_panel))
+    root.bind('<KeyRelease>', lambda e: key_release(e, state, keyboard))
+
+
+def key_push(e: tk.Event, state: State, keyboard: Keyboard, input_display: KeyboardInputDisplay,
+             configuration_panel: ConfigurationPanel):
+    key = state.create_unique_key(e)
+    rule = state.state
+    if e.keysym.lower() == c.SPACE.lower():
+        input_display.toggle_listen_to_user()
+        state.toggle_user_input_capture(input_display.is_listening_to_user)
+
+        entry_key = configuration_panel.entry_key
+        entry_key.focus_set()
+        entry_key.delete(0, tk.END)
+
+    if rule_exists(key, rule):
+        highlight_as_per_rule(key, rule, keyboard)
+    else:
+        keyboard.highlight_key(e.keysym)
+        keyboard.highlight_key(e.char)
+    state.set_text(e)
+
+
+def key_release(e: tk.Event, state: State, keyboard: Keyboard):
+    key = state.create_unique_key(e)
+    rule = state.state
+    if rule_exists(key, rule):
+        remove_highlight_as_per_rule(key, rule, keyboard)
+    else:
+        keyboard.remove_highlight_key(e.keysym)
+        keyboard.remove_highlight_key(e.char)

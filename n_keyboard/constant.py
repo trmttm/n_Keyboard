@@ -27,3 +27,6 @@ OPTION_L = 'Alt_L'
 ALT_L = 'Alt_L'
 FUNCTION_L = 'Super_L'
 MODIFIERS = (SHIFT, CONTROL, COMMAND, OPTION, ALT, FUNCTION)
+
+SPACE = 'space'
+RETURN = 'Return'
