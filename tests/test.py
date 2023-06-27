@@ -1,16 +1,4 @@
-import tkinter as tk
 import unittest
-
-
-def instantiate_root() -> tk.Tk:
-    import tkinter as tk
-    root = tk.Tk()
-    root.grid_columnconfigure(0, weight=1)
-    root.grid_rowconfigure(0, weight=1)
-    return root
-
-
-from n_keyboard import constant as c
 
 
 class MyTestCase(unittest.TestCase):
@@ -154,6 +142,8 @@ class MyTestCase(unittest.TestCase):
         root.mainloop()
 
     def test_oop_refactoring(self):
+        from n_keyboard.gui.components.root import instantiate_root
+        from n_keyboard import constant as c
         from n_keyboard.gui.components.keyboard_input_display import KeyboardInputDisplay
         from n_keyboard.gui.components.configuration_panel import ConfigurationPanel
         from n_keyboard.gui.components.controller_buttons import ControllerButtons

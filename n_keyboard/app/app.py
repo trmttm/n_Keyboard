@@ -3,7 +3,7 @@ from n_keyboard.gui.components.configuration_panel import ConfigurationPanel
 from n_keyboard.gui.components.controller_buttons import ControllerButtons
 from n_keyboard.gui.components.keyboard_input_display import KeyboardInputDisplay
 from n_keyboard.gui.components.parent_frame import ParentFrame
-from tests.test import instantiate_root
+from n_keyboard.gui.components.root import instantiate_root
 from .define_objects_interactions import define_objects_interactions
 from .gui_state import instantiate_state
 
