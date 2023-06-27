@@ -16,11 +16,11 @@ class KeyboardInputDisplay:
         label_keysym_num = ttk.Label(root, text='keysym_num', width=25)
         label_keycode = ttk.Label(root, text='keycode', width=25)
 
-        self.label_state_display = ttk.Label(root)
-        self.label_char_display = ttk.Label(root)
-        self.label_keysysm_display = ttk.Label(root)
-        self.label_keysym_num_display = ttk.Label(root)
-        self.label_keycode_display = ttk.Label(root)
+        self.label_state_display = ttk.Label(root, width=20)
+        self.label_char_display = ttk.Label(root, width=20)
+        self.label_keysysm_display = ttk.Label(root, width=20)
+        self.label_keysym_num_display = ttk.Label(root, width=20)
+        self.label_keycode_display = ttk.Label(root, width=20)
 
         self._var_checkbutton = tk.BooleanVar()
         self._var_checkbutton.set(True)
