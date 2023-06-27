@@ -5,11 +5,10 @@ from typing import Callable
 
 class KeyboardInputDisplay:
     def __init__(self, parent_frame: ttk):
-        root = ttk.Frame(parent_frame, padding=(15, 15))
+        self._root = root = ttk.Frame(parent_frame, padding=(15, 15))
         root.grid(row=0, column=0, sticky='nsew')
         root.grid_columnconfigure(0, weight=1)
         root.grid_rowconfigure(6, weight=1)
-        root.grid_propagate(False)
 
         label_state = ttk.Label(root, text='state', width=25)
         label_char = ttk.Label(root, text='char', width=25)
@@ -51,3 +50,6 @@ class KeyboardInputDisplay:
     def notify(self, *_):
         for subscriber in self._subscribers:
             subscriber(self._var_combobox.get())
+
+    def fix_frame_size(self):
+        self._root.grid_propagate(False)

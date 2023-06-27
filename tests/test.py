@@ -179,6 +179,10 @@ class MyTestCase(unittest.TestCase):
             check_button['command'] = lambda *_: state.update_state_upon_configuration()
         configuration_panel.entry_key.bind('<KeyRelease>', lambda *_: state.update_state_upon_configuration())
 
+        # Prevent dynami frame size change
+        configuration_panel.fix_frame_size()
+        input_display.fix_frame_size()
+
         root.mainloop()
 
     def test_encapsulate_as_an_app(self):
@@ -188,7 +192,7 @@ class MyTestCase(unittest.TestCase):
 
     def test_keyboard_display(self):
         from n_keyboard.app.app import App
-        app = App()
+        app = App(width=800, height=600)
         app.display_keyboard()
         app.run()
 

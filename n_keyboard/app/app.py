@@ -10,19 +10,20 @@ from .gui_state import instantiate_state
 
 
 class App:
-    def __init__(self, root=None):
+    def __init__(self, root=None, width=800, height=400):
         if root is None:  # root may be toplevel, passed by client application.
-            root = instantiate_root()
+            root = instantiate_root(width, height)
         self._root = root
 
         self._load_gui()
         self._instantiate_state()
         self._define_objects_interactions()
+        self._fix_frame()
         self._bind_commands()
 
     def _load_gui(self):
         # Each GUI components positions are hardcoded in their constructor.
-        self._parent_frame = parent_frame = ParentFrame(self._root)
+        self._parent_frame = parent_frame = ParentFrame(self._root).frame
         self._input_display = KeyboardInputDisplay(parent_frame)
         self._configuration_panel = ConfigurationPanel(parent_frame)
         self._controller_buttons = ControllerButtons(parent_frame)
@@ -38,6 +39,7 @@ class App:
 
     def display_keyboard(self):
         keyboard = Keyboard(self._parent_frame)
+        self._parent_frame.grid_rowconfigure(1, weight=1)
         self._controller_buttons.grid(row=2, column=0, columnspan=2)
 
         import tkinter as tk
@@ -52,6 +54,10 @@ class App:
 
         self._root.bind('<Key>', key_push)
         self._root.bind('<KeyRelease>', key_release)
+
+    def _fix_frame(self):
+        self._configuration_panel.fix_frame_size()
+        self._input_display.fix_frame_size()
 
     def run(self):
         self._root.mainloop()

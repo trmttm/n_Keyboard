@@ -4,11 +4,11 @@ from tkinter import ttk
 from n_keyboard import constant as c
 
 
-def instantiate_root() -> tk.Tk:
+def instantiate_root(width=800, height=400) -> tk.Tk:
     root = tk.Tk()
+    root.geometry(f'{width}x{height}')
     root.grid_columnconfigure(0, weight=1)
     root.grid_rowconfigure(0, weight=1)
-    root.grid_propagate(False)
 
     style = ttk.Style()
     themes = ('aqua', 'clam', 'alt', 'default', 'classic')

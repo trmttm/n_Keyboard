@@ -7,7 +7,6 @@ class ControllerButtons:
         self.button_ok = ttk.Button(root, text='OK')
         self.button_ok.grid(row=0, column=0)
         root.grid(row=1, column=0, columnspan=2)
-        root.grid_propagate(False)
         self._root = root
 
     def grid(self, *args, **kwargs):
