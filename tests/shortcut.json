@@ -1,1 +1,53 @@
-{"97": {"system_state": {"state": 0, "char": "a", "keysysm": "a", "keysym_num": 97}, "user_input": {"Shift": false, "Control": false, "Command": false, "Option": false, "Alt": false, "Function": false, "key": "a"}}, "4194369": {"system_state": {"state": 1, "char": "A", "keysysm": "A", "keysym_num": 65}, "user_input": {"Shift": true, "Control": false, "Command": false, "Option": false, "Alt": false, "Function": false, "key": "a"}}, "545259688": {"system_state": {"state": 24, "char": "\u00a8", "keysysm": "diaeresis", "keysym_num": 168}, "user_input": {"Shift": false, "Control": false, "Command": true, "Option": true, "Alt": false, "Function": false, "key": "u"}}}
+{
+  "97": {
+    "system_state": {
+      "state": 0,
+      "char": "a",
+      "keysysm": "a",
+      "keysym_num": 97
+    },
+    "user_input": {
+      "Shift": false,
+      "Control": false,
+      "Command": false,
+      "Option": false,
+      "Alt": false,
+      "Function": false,
+      "key": "a"
+    }
+  },
+  "4194369": {
+    "system_state": {
+      "state": 1,
+      "char": "A",
+      "keysysm": "A",
+      "keysym_num": 65
+    },
+    "user_input": {
+      "Shift": true,
+      "Control": false,
+      "Command": false,
+      "Option": false,
+      "Alt": false,
+      "Function": false,
+      "key": "a"
+    }
+  },
+  "545259688": {
+    "system_state": {
+      "state": 24,
+      "char": "\u00a8",
+      "keysysm": "diaeresis",
+      "keysym_num": 168
+    },
+    "user_input": {
+      "Shift": false,
+      "Control": false,
+      "Command": true,
+      "Option": true,
+      "Alt": false,
+      "Function": false,
+      "key": "u"
+    }
+  }
+}
