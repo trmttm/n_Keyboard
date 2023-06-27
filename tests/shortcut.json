@@ -1035,5 +1035,515 @@
       "Function": false,
       "key": "="
     }
+  },
+  "16_\u222b_integral_2239_192946731": {
+    "system_state": {
+      "state": 16,
+      "char": "\u222b",
+      "keysysm": "integral",
+      "keysym_num": 2239
+    },
+    "user_input": {
+      "Shift": false,
+      "Control": false,
+      "Command": false,
+      "Option": true,
+      "Alt": false,
+      "Function": false,
+      "key": "b"
+    }
+  },
+  "16_\u221a_radical_2262_159392282": {
+    "system_state": {
+      "state": 16,
+      "char": "\u221a",
+      "keysysm": "radical",
+      "keysym_num": 2262
+    },
+    "user_input": {
+      "Shift": false,
+      "Control": false,
+      "Command": false,
+      "Option": true,
+      "Alt": false,
+      "Function": false,
+      "key": "v"
+    }
+  },
+  "16_\u00e7_ccedilla_231_142606567": {
+    "system_state": {
+      "state": 16,
+      "char": "\u00e7",
+      "keysysm": "ccedilla",
+      "keysym_num": 231
+    },
+    "user_input": {
+      "Shift": false,
+      "Control": false,
+      "Command": false,
+      "Option": true,
+      "Alt": false,
+      "Function": false,
+      "key": "c"
+    }
+  },
+  "16_\u2248_??_0_125837896": {
+    "system_state": {
+      "state": 16,
+      "char": "\u2248",
+      "keysysm": "??",
+      "keysym_num": 0
+    },
+    "user_input": {
+      "Shift": false,
+      "Control": false,
+      "Command": false,
+      "Option": true,
+      "Alt": false,
+      "Function": false,
+      "key": "x"
+    }
+  },
+  "16_\u03a9_Greek_OMEGA_2009_109052841": {
+    "system_state": {
+      "state": 16,
+      "char": "\u03a9",
+      "keysysm": "Greek_OMEGA",
+      "keysym_num": 2009
+    },
+    "user_input": {
+      "Shift": false,
+      "Control": false,
+      "Command": false,
+      "Option": true,
+      "Alt": false,
+      "Function": false,
+      "key": "z"
+    }
+  },
+  "16__Alt_L_65513_981530878": {
+    "system_state": {
+      "state": 16,
+      "char": "",
+      "keysysm": "Alt_L",
+      "keysym_num": 65513
+    },
+    "user_input": {
+      "Shift": false,
+      "Control": false,
+      "Command": false,
+      "Option": true,
+      "Alt": false,
+      "Function": false,
+      "key": "z"
+    }
+  },
+  "16_\u00e5_aring_229_8388837": {
+    "system_state": {
+      "state": 16,
+      "char": "\u00e5",
+      "keysysm": "aring",
+      "keysym_num": 229
+    },
+    "user_input": {
+      "Shift": false,
+      "Control": false,
+      "Command": false,
+      "Option": true,
+      "Alt": false,
+      "Function": false,
+      "key": "a"
+    }
+  },
+  "16_\u00df_ssharp_223_25166047": {
+    "system_state": {
+      "state": 16,
+      "char": "\u00df",
+      "keysysm": "ssharp",
+      "keysym_num": 223
+    },
+    "user_input": {
+      "Shift": false,
+      "Control": false,
+      "Command": false,
+      "Option": true,
+      "Alt": false,
+      "Function": false,
+      "key": "s"
+    }
+  },
+  "16_\u2202_partialderivative_2287_41951746": {
+    "system_state": {
+      "state": 16,
+      "char": "\u2202",
+      "keysysm": "partialderivative",
+      "keysym_num": 2287
+    },
+    "user_input": {
+      "Shift": false,
+      "Control": false,
+      "Command": false,
+      "Option": true,
+      "Alt": false,
+      "Function": false,
+      "key": "d"
+    }
+  },
+  "16_\u0192_function_2294_58720658": {
+    "system_state": {
+      "state": 16,
+      "char": "\u0192",
+      "keysysm": "function",
+      "keysym_num": 2294
+    },
+    "user_input": {
+      "Shift": false,
+      "Control": false,
+      "Command": false,
+      "Option": true,
+      "Alt": false,
+      "Function": false,
+      "key": "f"
+    }
+  },
+  "16_\u00a9_copyright_169_92274857": {
+    "system_state": {
+      "state": 16,
+      "char": "\u00a9",
+      "keysysm": "copyright",
+      "keysym_num": 169
+    },
+    "user_input": {
+      "Shift": false,
+      "Control": false,
+      "Command": false,
+      "Option": true,
+      "Alt": false,
+      "Function": false,
+      "key": "g"
+    }
+  },
+  "16_\u02d9_abovedot_511_75498201": {
+    "system_state": {
+      "state": 16,
+      "char": "\u02d9",
+      "keysysm": "abovedot",
+      "keysym_num": 511
+    },
+    "user_input": {
+      "Shift": false,
+      "Control": false,
+      "Command": false,
+      "Option": true,
+      "Alt": false,
+      "Function": false,
+      "key": "h"
+    }
+  },
+  "16_\u2206_??_0_645931526": {
+    "system_state": {
+      "state": 16,
+      "char": "\u2206",
+      "keysysm": "??",
+      "keysym_num": 0
+    },
+    "user_input": {
+      "Shift": false,
+      "Control": false,
+      "Command": false,
+      "Option": true,
+      "Alt": false,
+      "Function": false,
+      "key": "j"
+    }
+  },
+  "16_\u2026_ellipsis_2734_696262694": {
+    "system_state": {
+      "state": 16,
+      "char": "\u2026",
+      "keysysm": "ellipsis",
+      "keysym_num": 2734
+    },
+    "user_input": {
+      "Shift": false,
+      "Control": false,
+      "Command": false,
+      "Option": true,
+      "Alt": false,
+      "Function": false,
+      "key": ";"
+    }
+  },
+  "16_\u00e6_ae_230_662700262": {
+    "system_state": {
+      "state": 16,
+      "char": "\u00e6",
+      "keysysm": "ae",
+      "keysym_num": 230
+    },
+    "user_input": {
+      "Shift": false,
+      "Control": false,
+      "Command": false,
+      "Option": true,
+      "Alt": false,
+      "Function": false,
+      "key": "'"
+    }
+  },
+  "16_\u00ab_guillemotleft_171_713031851": {
+    "system_state": {
+      "state": 16,
+      "char": "\u00ab",
+      "keysysm": "guillemotleft",
+      "keysym_num": 171
+    },
+    "user_input": {
+      "Shift": false,
+      "Control": false,
+      "Command": false,
+      "Option": true,
+      "Alt": false,
+      "Function": false,
+      "key": "\\"
+    }
+  },
+  "16_\u02da_??_0_679477978": {
+    "system_state": {
+      "state": 16,
+      "char": "\u02da",
+      "keysysm": "??",
+      "keysym_num": 0
+    },
+    "user_input": {
+      "Shift": false,
+      "Control": false,
+      "Command": false,
+      "Option": true,
+      "Alt": false,
+      "Function": false,
+      "key": "k"
+    }
+  },
+  "16_\u00ac_notsign_172_629145772": {
+    "system_state": {
+      "state": 16,
+      "char": "\u00ac",
+      "keysysm": "notsign",
+      "keysym_num": 172
+    },
+    "user_input": {
+      "Shift": false,
+      "Control": false,
+      "Command": false,
+      "Option": true,
+      "Alt": false,
+      "Function": false,
+      "key": "l"
+    }
+  },
+  "16_\u0153_??_5053_209715539": {
+    "system_state": {
+      "state": 16,
+      "char": "\u0153",
+      "keysysm": "??",
+      "keysym_num": 5053
+    },
+    "user_input": {
+      "Shift": false,
+      "Control": false,
+      "Command": false,
+      "Option": true,
+      "Alt": false,
+      "Function": false,
+      "key": "q"
+    }
+  },
+  "16_\u2211_??_0_226501137": {
+    "system_state": {
+      "state": 16,
+      "char": "\u2211",
+      "keysysm": "??",
+      "keysym_num": 0
+    },
+    "user_input": {
+      "Shift": false,
+      "Control": false,
+      "Command": false,
+      "Option": true,
+      "Alt": false,
+      "Function": false,
+      "key": "w"
+    }
+  },
+  "16_\u00b4_acute_180_243269812": {
+    "system_state": {
+      "state": 16,
+      "char": "\u00b4",
+      "keysysm": "acute",
+      "keysym_num": 180
+    },
+    "user_input": {
+      "Shift": false,
+      "Control": false,
+      "Command": false,
+      "Option": true,
+      "Alt": false,
+      "Function": false,
+      "key": "e"
+    }
+  },
+  "16_\u00ae_registered_174_260047022": {
+    "system_state": {
+      "state": 16,
+      "char": "\u00ae",
+      "keysysm": "registered",
+      "keysym_num": 174
+    },
+    "user_input": {
+      "Shift": false,
+      "Control": false,
+      "Command": false,
+      "Option": true,
+      "Alt": false,
+      "Function": false,
+      "key": "r"
+    }
+  },
+  "16_\u2020_dagger_2801_293609504": {
+    "system_state": {
+      "state": 16,
+      "char": "\u2020",
+      "keysysm": "dagger",
+      "keysym_num": 2801
+    },
+    "user_input": {
+      "Shift": false,
+      "Control": false,
+      "Command": false,
+      "Option": true,
+      "Alt": false,
+      "Function": false,
+      "key": "t"
+    }
+  },
+  "16_\u00a5_yen_165_276824229": {
+    "system_state": {
+      "state": 16,
+      "char": "\u00a5",
+      "keysysm": "yen",
+      "keysym_num": 165
+    },
+    "user_input": {
+      "Shift": false,
+      "Control": false,
+      "Command": false,
+      "Option": true,
+      "Alt": false,
+      "Function": false,
+      "key": "y"
+    }
+  },
+  "16_\u00f8_oslash_248_528482552": {
+    "system_state": {
+      "state": 16,
+      "char": "\u00f8",
+      "keysysm": "oslash",
+      "keysym_num": 248
+    },
+    "user_input": {
+      "Shift": false,
+      "Control": false,
+      "Command": false,
+      "Option": true,
+      "Alt": false,
+      "Function": false,
+      "key": "o"
+    }
+  },
+  "16_\u03c0_Greek_pi_2032_595592128": {
+    "system_state": {
+      "state": 16,
+      "char": "\u03c0",
+      "keysysm": "Greek_pi",
+      "keysym_num": 2032
+    },
+    "user_input": {
+      "Shift": false,
+      "Control": false,
+      "Command": false,
+      "Option": true,
+      "Alt": false,
+      "Function": false,
+      "key": "p"
+    }
+  },
+  "16_\u201c_leftdoublequotemark_2770_562044956": {
+    "system_state": {
+      "state": 16,
+      "char": "\u201c",
+      "keysysm": "leftdoublequotemark",
+      "keysym_num": 2770
+    },
+    "user_input": {
+      "Shift": false,
+      "Control": false,
+      "Command": false,
+      "Option": true,
+      "Alt": false,
+      "Function": false,
+      "key": "["
+    }
+  },
+  "16_\u2018_leftsinglequotemark_2768_511713304": {
+    "system_state": {
+      "state": 16,
+      "char": "\u2018",
+      "keysysm": "leftsinglequotemark",
+      "keysym_num": 2768
+    },
+    "user_input": {
+      "Shift": false,
+      "Control": false,
+      "Command": false,
+      "Option": true,
+      "Alt": false,
+      "Function": false,
+      "key": "]"
+    }
+  },
+  "16_\u00a8_diaeresis_168_545259688": {
+    "system_state": {
+      "state": 16,
+      "char": "\u00a8",
+      "keysysm": "diaeresis",
+      "keysym_num": 168
+    },
+    "user_input": {
+      "Shift": false,
+      "Control": false,
+      "Command": false,
+      "Option": true,
+      "Alt": false,
+      "Function": false,
+      "key": "u"
+    }
+  },
+  "16_\u02c6_??_0_578814662": {
+    "system_state": {
+      "state": 16,
+      "char": "\u02c6",
+      "keysysm": "??",
+      "keysym_num": 0
+    },
+    "user_input": {
+      "Shift": false,
+      "Control": false,
+      "Command": false,
+      "Option": true,
+      "Alt": false,
+      "Function": false,
+      "key": "i"
+    }
   }
 }
