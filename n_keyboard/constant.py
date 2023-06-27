@@ -12,3 +12,18 @@ KEYCODE = 'keycode'
 
 STYLE_LABEL_DEFAULT = "TLabel"
 STYLE_LABEL_RED = "Red.TLabel"
+
+SHIFT = 'Shift'
+CONTROL = 'Control'
+COMMAND = 'Command'
+OPTION = 'Option'
+ALT = 'Alt'
+FUNCTION = 'Function'
+
+SHIFT_L = 'Shift_L'
+CONTROL_L = 'Control_L'
+COMMAND_L = 'Metal_L'
+OPTION_L = 'Alt_L'
+ALT_L = 'Alt_L'
+FUNCTION_L = 'Super_L'
+MODIFIERS = (SHIFT, CONTROL, COMMAND, OPTION, ALT, FUNCTION)

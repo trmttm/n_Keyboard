@@ -13,12 +13,16 @@ class State:
             except:
                 state = dict()
 
-        self.state = state
+        self._data = state
         self.path = path
-        self.keycode = None
+        self._unique_key = None
         self._subscribers: dict[[str], list] = {}
         self._capture_user_input = True
         self._get_user_input = get_user_input
+
+    @property
+    def state(self) -> dict:
+        return dict(self._data)
 
     def toggle_user_input_capture(self, on_off: bool):
         self._capture_user_input = on_off
@@ -35,7 +39,7 @@ class State:
 
     def upon_ok(self):
         clean_state = {}
-        for keycode, data in self.state.items():
+        for keycode, data in self._data.items():
             if c.USER_INPUT in data:
                 clean_state[keycode] = data
         with open(self.path, 'w') as json_file:
@@ -43,26 +47,32 @@ class State:
             print(f'Saved file to {self.path}.')
 
     def update_state_upon_user_input(self, e: tk.Event):
-        self.keycode = e.keycode
-        new_state = {
-            e.keycode: {c.SYSTEM_STATE: {
-                c.STATE: e.state,
-                c.CHAR: e.char,
-                c.KEYSYM: e.keysym,
-                c.KEYSYM_NUM: e.keysym_num,
-            }}
-        }
-        self.state.update(new_state)
+        unique_key = self.create_unique_key(e)
+        if unique_key not in self._data:
+            self._unique_key = unique_key
+            new_state = {
+                unique_key: {c.SYSTEM_STATE: {
+                    c.STATE: e.state,
+                    c.CHAR: e.char,
+                    c.KEYSYM: e.keysym,
+                    c.KEYSYM_NUM: e.keysym_num,
+                }}
+            }
+            self._data.update(new_state)
+
+    @staticmethod
+    def create_unique_key(e: tk.Event) -> str:
+        return f'{e.state}_{e.char}_{e.keysym}_{e.keysym_num}'
 
     def update_state_upon_configuration(self):
-        system_state = self.state.get(self.keycode)
+        system_state = self._data.get(self._unique_key)
         if system_state:
             user_input = self._get_user_input()
             system_state.update({c.USER_INPUT: user_input})
             new_state = {
-                self.keycode: system_state,
+                self._unique_key: system_state,
             }
-            self.state.update(new_state)
+            self._data.update(new_state)
 
     def set_text(self, e: tk.Event):
         if self._capture_user_input:

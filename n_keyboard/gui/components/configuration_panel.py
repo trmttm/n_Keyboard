@@ -12,7 +12,7 @@ class ConfigurationPanel:
         root.grid_rowconfigure(15, weight=1)
         self._root = root
 
-        self.modifiers = ('Shift', 'Control', 'Command', 'Option', 'Alt', 'Function')
+        self.modifiers = c.MODIFIERS
         self.vars = dict(zip(self.modifiers, tuple(tk.BooleanVar() for _ in self.modifiers)))
         self.check_buttons = []
 

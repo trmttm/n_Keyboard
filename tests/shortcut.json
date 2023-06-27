@@ -1,53 +1,87 @@
 {
-  "97": {
+  "16_\u2265_greaterthanequal_2238": {
     "system_state": {
-      "state": 0,
-      "char": "a",
-      "keysysm": "a",
-      "keysym_num": 97
+      "state": 16,
+      "char": "\u2265",
+      "keysysm": "greaterthanequal",
+      "keysym_num": 2238
     },
     "user_input": {
       "Shift": false,
       "Control": false,
       "Command": false,
-      "Option": false,
-      "Alt": false,
-      "Function": false,
-      "key": "a"
-    }
-  },
-  "4194369": {
-    "system_state": {
-      "state": 1,
-      "char": "A",
-      "keysysm": "A",
-      "keysym_num": 65
-    },
-    "user_input": {
-      "Shift": true,
-      "Control": false,
-      "Command": false,
-      "Option": false,
-      "Alt": false,
-      "Function": false,
-      "key": "a"
-    }
-  },
-  "545259688": {
-    "system_state": {
-      "state": 24,
-      "char": "\u00a8",
-      "keysysm": "diaeresis",
-      "keysym_num": 168
-    },
-    "user_input": {
-      "Shift": false,
-      "Control": false,
-      "Command": true,
       "Option": true,
       "Alt": false,
       "Function": false,
-      "key": "u"
+      "key": "."
+    }
+  },
+  "16_\u2264_lessthanequal_2236": {
+    "system_state": {
+      "state": 16,
+      "char": "\u2264",
+      "keysysm": "lessthanequal",
+      "keysym_num": 2236
+    },
+    "user_input": {
+      "Shift": false,
+      "Control": false,
+      "Command": false,
+      "Option": true,
+      "Alt": false,
+      "Function": false,
+      "key": ","
+    }
+  },
+  "16_\u00b5_mu_181": {
+    "system_state": {
+      "state": 16,
+      "char": "\u00b5",
+      "keysysm": "mu",
+      "keysym_num": 181
+    },
+    "user_input": {
+      "Shift": false,
+      "Control": false,
+      "Command": false,
+      "Option": true,
+      "Alt": false,
+      "Function": false,
+      "key": "m"
+    }
+  },
+  "16_\u00f7_division_247": {
+    "system_state": {
+      "state": 16,
+      "char": "\u00f7",
+      "keysysm": "division",
+      "keysym_num": 247
+    },
+    "user_input": {
+      "Shift": false,
+      "Control": false,
+      "Command": false,
+      "Option": true,
+      "Alt": false,
+      "Function": false,
+      "key": "/"
+    }
+  },
+  "16_\u222b_integral_2239": {
+    "system_state": {
+      "state": 16,
+      "char": "\u222b",
+      "keysysm": "integral",
+      "keysym_num": 2239
+    },
+    "user_input": {
+      "Shift": false,
+      "Control": false,
+      "Command": false,
+      "Option": true,
+      "Alt": false,
+      "Function": false,
+      "key": "b"
     }
   }
 }
