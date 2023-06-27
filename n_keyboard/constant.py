@@ -9,3 +9,6 @@ CHAR = 'char'
 KEYSYM = 'keysysm'
 KEYSYM_NUM = 'keysym_num'
 KEYCODE = 'keycode'
+
+STYLE_LABEL_DEFAULT = "TLabel"
+STYLE_LABEL_RED = "Red.TLabel"

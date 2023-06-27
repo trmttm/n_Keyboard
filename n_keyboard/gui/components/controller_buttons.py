@@ -3,7 +3,11 @@ from tkinter import ttk
 
 class ControllerButtons:
     def __init__(self, parent_frame: ttk.Frame):
-        frame_bottom = ttk.Frame(parent_frame)
-        self.button_ok = ttk.Button(frame_bottom, text='OK')
+        root = ttk.Frame(parent_frame)
+        self.button_ok = ttk.Button(root, text='OK')
         self.button_ok.grid(row=0, column=0)
-        frame_bottom.grid(row=1, column=0, columnspan=2)
+        root.grid(row=1, column=0, columnspan=2)
+        self._root = root
+
+    def grid(self, *args, **kwargs):
+        self._root.grid(*args, **kwargs)

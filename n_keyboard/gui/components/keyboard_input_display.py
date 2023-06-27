@@ -4,9 +4,9 @@ from typing import Callable
 
 
 class KeyboardInputDisplay:
-    def __init__(self, parent_frame: ttk, row=0, column=0, rowspan=None, columnspan=None):
+    def __init__(self, parent_frame: ttk):
         root = ttk.Frame(parent_frame, padding=(15, 15))
-        root.grid(row=row, column=column, columnspan=columnspan, rowspan=rowspan, sticky='nsew')
+        root.grid(row=0, column=0, sticky='nsew')
         root.grid_columnconfigure(0, weight=1)
         root.grid_rowconfigure(6, weight=1)
 
