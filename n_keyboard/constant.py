@@ -1,3 +1,5 @@
+FILE_NAME = 'shortcut.json'
+
 USER_INPUT = 'user_input'
 SYSTEM_STATE = 'system_state'
 KEY = 'key'

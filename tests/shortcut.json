@@ -32,5 +32,22 @@
       "Function": false,
       "key": "a"
     }
+  },
+  "545259688": {
+    "system_state": {
+      "state": 24,
+      "char": "\u00a8",
+      "keysysm": "diaeresis",
+      "keysym_num": 168
+    },
+    "user_input": {
+      "Shift": false,
+      "Control": false,
+      "Command": true,
+      "Option": true,
+      "Alt": false,
+      "Function": false,
+      "key": "u"
+    }
   }
 }

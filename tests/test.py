@@ -191,6 +191,10 @@ class MyTestCase(unittest.TestCase):
 
         root.mainloop()
 
+    def test_encapsulate_as_an_app(self):
+        from n_keyboard.app.app import App
+        app = App()
+
 
 if __name__ == '__main__':
     unittest.main()
