@@ -11,6 +11,8 @@ def instantiate_root() -> tk.Tk:
     root.grid_propagate(False)
 
     style = ttk.Style()
-    style.configure(c.STYLE_LABEL_RED, foreground="red")
+    themes= ('aqua', 'clam', 'alt', 'default', 'classic')
+    style.theme_use(themes[2])
+    style.configure(c.STYLE_LABEL_RED, foreground="red", background='yellow')
 
     return root

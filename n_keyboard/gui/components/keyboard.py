@@ -23,7 +23,7 @@ class Keyboard:
             max_row = max(max_row, r)
             for c, text in enumerate(list(row)):
                 max_col = max(max_col, c)
-                label = ttk.Label(root, text=text, borderwidth=3, relief=label_style[5], anchor='center')
+                label = ttk.Label(root, text=text, borderwidth=3, relief=label_style[1], anchor='center')
                 label.grid(row=r, column=c, sticky='nswe')
                 self._key_labels[text.lower()] = label
 
