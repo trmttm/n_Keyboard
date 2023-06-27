@@ -39,9 +39,12 @@ class App:
 
     def display_keyboard(self):
         keyboard = Keyboard(self._parent_frame)
+
+        # re-configure row and re-position controller buttons
         self._parent_frame.grid_rowconfigure(1, weight=1)
         self._controller_buttons.grid(row=2, column=0, columnspan=2)
 
+        # Bind root again
         import tkinter as tk
         def key_push(e: tk.Event):
             keyboard.highlight_key(e.keysym)
