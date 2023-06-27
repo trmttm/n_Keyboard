@@ -1,11 +1,11 @@
+from n_keyboard.gui.bind_commands import bind_commands
 from n_keyboard.gui.components.configuration_panel import ConfigurationPanel
 from n_keyboard.gui.components.controller_buttons import ControllerButtons
 from n_keyboard.gui.components.keyboard_input_display import KeyboardInputDisplay
+from n_keyboard.gui.components.parent_frame import ParentFrame
 from tests.test import instantiate_root
-from .bind_commands import bind_commands
 from .define_objects_interactions import define_objects_interactions
 from .gui_state import instantiate_state
-from .parent_frame import configure_frame_parent
 
 
 class App:
@@ -20,7 +20,7 @@ class App:
         self._bind_commands()
 
     def _load_gui(self):
-        frame_parent = configure_frame_parent(self._root)
+        frame_parent = ParentFrame(self._root)
         self._input_display = KeyboardInputDisplay(frame_parent)
         self._configuration_panel = ConfigurationPanel(frame_parent)
         self._controller_buttons = ControllerButtons(frame_parent)
