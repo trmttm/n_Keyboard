@@ -8,6 +8,7 @@ def instantiate_root() -> tk.Tk:
     root = tk.Tk()
     root.grid_columnconfigure(0, weight=1)
     root.grid_rowconfigure(0, weight=1)
+    root.grid_propagate(False)
 
     style = ttk.Style()
     style.configure(c.STYLE_LABEL_RED, foreground="red")

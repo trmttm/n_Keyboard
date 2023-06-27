@@ -9,6 +9,7 @@ class KeyboardInputDisplay:
         root.grid(row=0, column=0, sticky='nsew')
         root.grid_columnconfigure(0, weight=1)
         root.grid_rowconfigure(6, weight=1)
+        root.grid_propagate(False)
 
         label_state = ttk.Label(root, text='state', width=25)
         label_char = ttk.Label(root, text='char', width=25)

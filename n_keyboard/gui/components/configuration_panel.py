@@ -10,6 +10,7 @@ class ConfigurationPanel:
         root.grid(row=0, column=1, sticky='nsew')
         root.grid_columnconfigure(1, weight=1)
         root.grid_rowconfigure(15, weight=1)
+        root.grid_propagate(False)
 
         self.modifiers = ('Shift', 'Control', 'Command', 'Option', 'Alt', 'Function')
         self.vars = dict(zip(self.modifiers, tuple(tk.BooleanVar() for _ in self.modifiers)))
