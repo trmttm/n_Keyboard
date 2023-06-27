@@ -53,9 +53,8 @@ class Keyboard:
 
         # Right column
         self.add_label_and_register(root, 'Backspace', label_style, 1, max_col + number_of_manual_columns + 1)
-        self.add_label_and_register(root, 'Return', label_style, 2, max_col + number_of_manual_columns + 1,rowspan=2)
-        self.add_label_and_register(root, 'Shift_R', label_style, 4, max_col + number_of_manual_columns - 1,3)
-
+        self.add_label_and_register(root, 'Return', label_style, 2, max_col + number_of_manual_columns + 1, rowspan=2)
+        self.add_label_and_register(root, 'Shift_R', label_style, 4, max_col + number_of_manual_columns - 1, 3)
 
         for row in range(max_row + number_of_manual_rows + 1):
             root.grid_rowconfigure(row, weight=1)
