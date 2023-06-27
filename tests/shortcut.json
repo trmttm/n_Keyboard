@@ -1,56 +1,5 @@
 {
-  "16_\u2265_greaterthanequal_2238": {
-    "system_state": {
-      "state": 16,
-      "char": "\u2265",
-      "keysysm": "greaterthanequal",
-      "keysym_num": 2238
-    },
-    "user_input": {
-      "Shift": false,
-      "Control": false,
-      "Command": false,
-      "Option": true,
-      "Alt": false,
-      "Function": false,
-      "key": "."
-    }
-  },
-  "16_\u2264_lessthanequal_2236": {
-    "system_state": {
-      "state": 16,
-      "char": "\u2264",
-      "keysysm": "lessthanequal",
-      "keysym_num": 2236
-    },
-    "user_input": {
-      "Shift": false,
-      "Control": false,
-      "Command": false,
-      "Option": true,
-      "Alt": false,
-      "Function": false,
-      "key": ","
-    }
-  },
-  "16_\u00b5_mu_181": {
-    "system_state": {
-      "state": 16,
-      "char": "\u00b5",
-      "keysysm": "mu",
-      "keysym_num": 181
-    },
-    "user_input": {
-      "Shift": false,
-      "Control": false,
-      "Command": false,
-      "Option": true,
-      "Alt": false,
-      "Function": false,
-      "key": "m"
-    }
-  },
-  "16_\u00f7_division_247": {
+  "16_\u00f7_division_247_746586359": {
     "system_state": {
       "state": 16,
       "char": "\u00f7",
@@ -67,12 +16,12 @@
       "key": "/"
     }
   },
-  "16_\u222b_integral_2239": {
+  "16_\u2265_greaterthanequal_2238_796926565": {
     "system_state": {
       "state": 16,
-      "char": "\u222b",
-      "keysysm": "integral",
-      "keysym_num": 2239
+      "char": "\u2265",
+      "keysysm": "greaterthanequal",
+      "keysym_num": 2238
     },
     "user_input": {
       "Shift": false,
@@ -81,7 +30,41 @@
       "Option": true,
       "Alt": false,
       "Function": false,
-      "key": "b"
+      "key": "."
+    }
+  },
+  "16_\u2264_lessthanequal_2236_729817700": {
+    "system_state": {
+      "state": 16,
+      "char": "\u2264",
+      "keysysm": "lessthanequal",
+      "keysym_num": 2236
+    },
+    "user_input": {
+      "Shift": false,
+      "Control": false,
+      "Command": false,
+      "Option": true,
+      "Alt": false,
+      "Function": false,
+      "key": ","
+    }
+  },
+  "16_\u00b5_mu_181_780140725": {
+    "system_state": {
+      "state": 16,
+      "char": "\u00b5",
+      "keysysm": "mu",
+      "keysym_num": 181
+    },
+    "user_input": {
+      "Shift": false,
+      "Control": false,
+      "Command": false,
+      "Option": false,
+      "Alt": false,
+      "Function": false,
+      "key": "m"
     }
   }
 }

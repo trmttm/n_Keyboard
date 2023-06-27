@@ -62,7 +62,7 @@ class State:
 
     @staticmethod
     def create_unique_key(e: tk.Event) -> str:
-        return f'{e.state}_{e.char}_{e.keysym}_{e.keysym_num}'
+        return f'{e.state}_{e.char}_{e.keysym}_{e.keysym_num}_{e.keycode}'
 
     def update_state_upon_configuration(self):
         system_state = self._data.get(self._unique_key)
