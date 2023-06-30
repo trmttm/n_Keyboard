@@ -373,40 +373,6 @@
       "key": "2"
     }
   },
-  "0__Return_65293_603979789": {
-    "system_state": {
-      "state": 0,
-      "char": "",
-      "keysysm": "Return",
-      "keysym_num": 65293
-    },
-    "user_input": {
-      "Shift": false,
-      "Control": false,
-      "Command": false,
-      "Option": true,
-      "Alt": false,
-      "Function": false,
-      "key": "2\u2122\u2122\u00a1\u2122\u00a1\u2122\u00a1"
-    }
-  },
-  "8_a_a_97_97": {
-    "system_state": {
-      "state": 8,
-      "char": "a",
-      "keysysm": "a",
-      "keysym_num": 97
-    },
-    "user_input": {
-      "Shift": false,
-      "Control": false,
-      "Command": false,
-      "Option": true,
-      "Alt": false,
-      "Function": false,
-      "key": "2\u2122\u2122\u00a1\u2122\u00a1\u2122\u00a1"
-    }
-  },
   "16_\u00a3_sterling_163_343933091": {
     "system_state": {
       "state": 16,
@@ -957,23 +923,6 @@
       "char": "\u201a",
       "keysysm": "singlelowquotemark",
       "keysym_num": 2813
-    },
-    "user_input": {
-      "Shift": true,
-      "Control": false,
-      "Command": true,
-      "Option": true,
-      "Alt": false,
-      "Function": false,
-      "key": "0"
-    }
-  },
-  "0_\\_backslash_92_704643164": {
-    "system_state": {
-      "state": 0,
-      "char": "\\",
-      "keysysm": "backslash",
-      "keysym_num": 92
     },
     "user_input": {
       "Shift": true,

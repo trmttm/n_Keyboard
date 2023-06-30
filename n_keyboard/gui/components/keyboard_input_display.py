@@ -15,16 +15,18 @@ class KeyboardInputDisplay:
         label_keysysm = ttk.Label(root, text='keysysm', width=25)
         label_keysym_num = ttk.Label(root, text='keysym_num', width=25)
         label_keycode = ttk.Label(root, text='keycode', width=25)
+        label_unique_key = ttk.Label(root, text='Unique Key', width=25)
 
         self.label_state_display = ttk.Label(root, width=20)
         self.label_char_display = ttk.Label(root, width=20)
         self.label_keysysm_display = ttk.Label(root, width=20)
         self.label_keysym_num_display = ttk.Label(root, width=20)
         self.label_keycode_display = ttk.Label(root, width=20)
+        self.entry_unique_key = ttk.Entry(root)
 
         self._var_checkbutton = tk.BooleanVar()
         self._var_checkbutton.set(True)
-        label_capture_user_input = ttk.Label(root, width=25)
+        label_capture_user_input = ttk.Label(root, width=25, text='Capture User Input')
         check_button_capture_user_input = ttk.Checkbutton(root, variable=self._var_checkbutton, command=self.notify)
 
         label_state.grid(row=0, column=0, sticky='nsew')
@@ -32,15 +34,17 @@ class KeyboardInputDisplay:
         label_keysysm.grid(row=2, column=0, sticky='nsew')
         label_keysym_num.grid(row=3, column=0, sticky='nsew')
         label_keycode.grid(row=4, column=0, sticky='nsew')
+        label_unique_key.grid(row=5, column=0, sticky='nsew')
 
         self.label_state_display.grid(row=0, column=1, sticky='nsew')
         self.label_char_display.grid(row=1, column=1, sticky='nsew')
         self.label_keysysm_display.grid(row=2, column=1, sticky='nsew')
         self.label_keysym_num_display.grid(row=3, column=1, sticky='nsew')
         self.label_keycode_display.grid(row=4, column=1, sticky='nsew')
+        self.entry_unique_key.grid(row=5, column=1, sticky='nsew')
 
-        label_capture_user_input.grid(row=5, column=0)
-        check_button_capture_user_input.grid(row=5, column=1)
+        label_capture_user_input.grid(row=6, column=0)
+        check_button_capture_user_input.grid(row=6, column=1)
 
         self._subscribers = []
 

@@ -81,5 +81,7 @@ class State:
             self._notify(c.KEYSYM, e.keysym)
             self._notify(c.KEYSYM_NUM, e.keysym_num)
             self._notify(c.KEYCODE, e.keycode)
+            self._notify(c.UNIQUE_KEY, self.create_unique_key(e))
 
             self.update_state_upon_user_input(e)
+

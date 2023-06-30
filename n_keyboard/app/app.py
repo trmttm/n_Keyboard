@@ -36,7 +36,7 @@ class App:
         define_objects_interactions(self._input_display, self._state)
 
     def _bind_commands(self):
-        bind_commands(self._configuration_panel, self._controller_buttons,self._input_display, self._root, self._state)
+        bind_commands(self._configuration_panel, self._controller_buttons, self._input_display, self._root, self._state)
 
     def display_keyboard(self):
         keyboard = Keyboard(self._parent_frame)
