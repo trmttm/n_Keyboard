@@ -407,23 +407,6 @@
       "key": "2\u2122\u2122\u00a1\u2122\u00a1\u2122\u00a1"
     }
   },
-  "0__BackSpace_65288_855638143": {
-    "system_state": {
-      "state": 0,
-      "char": "",
-      "keysysm": "BackSpace",
-      "keysym_num": 65288
-    },
-    "user_input": {
-      "Shift": false,
-      "Control": false,
-      "Command": false,
-      "Option": true,
-      "Alt": false,
-      "Function": false,
-      "key": ""
-    }
-  },
   "16_\u00a3_sterling_163_343933091": {
     "system_state": {
       "state": 16,
